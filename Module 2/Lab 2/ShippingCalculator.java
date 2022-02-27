@@ -1,6 +1,6 @@
 // Import java libraries
 import java.util.Scanner;
-import java.text.DecimalFormat;
+// import java.text.DecimalFormat;
 
 /**
    CTP150-400 | Module 2 | Lab 2
@@ -47,7 +47,7 @@ public class ShippingCalculator
    
    
    /**
-      Prints a visually-appealing header & introduces program to end-user.
+      Prints a visually-appealing header and introduces program to end-user.
    */
    
    public static void intro()
@@ -79,7 +79,7 @@ public class ShippingCalculator
       
       // Create decimal formatter object
       // Designed for pounds
-      DecimalFormat lbs = new DecimalFormat("#0.00" + " lbs");
+      // DecimalFormat lbs = new DecimalFormat("#0.00" + " lbs");
       
       // Get weight input
       System.out.print("Enter item's weight in lbs: ");
@@ -92,7 +92,8 @@ public class ShippingCalculator
          if (input > 20)
          {
             // Error message
-            System.out.println("You entered: " + lbs.format(input));
+            //System.out.println("You entered: " + lbs.format(input));
+            System.out.printf("You entered: %,.2f lbs\n", input);
             System.out.println("Packages above 20 lbs are too heavy to ship.");
             System.out.println("Please try again with a different item.");
             
@@ -103,7 +104,8 @@ public class ShippingCalculator
          else if (input < 0)
          {
             // Error message
-            System.out.println(lbs.format(input) + " is invalid");
+            //System.out.println(lbs.format(input) + " is invalid");
+            System.out.printf("%,.2f is invalid.\n", input);
             System.out.println("Weight must be greater than 0 lbs.");
             System.out.println("Please try again.");         
          
@@ -165,13 +167,19 @@ public class ShippingCalculator
    { 
       // Create decimal formatter object
       // Designed for USD
-      DecimalFormat usd = new DecimalFormat("$" + "#0.00");
+      // DecimalFormat usd = new DecimalFormat("$" + "#0.00");
             
       // Display itemized totals to end-user
+      /*
       System.out.println("Item price:" + "\t\t\t" + usd.format(price));
       System.out.println("Shipping:" + "\t\t\t" + usd.format(shipping));
       System.out.println("--------------------------");
       System.out.println("Total cost:" + "\t\t\t" + usd.format(price + shipping));
+      */
+      System.out.printf("Item price:" + "\t\t\t" + "$%,.2f\n", price);
+      System.out.printf("Shipping:" + "\t\t\t" + "$%,.2f\n", shipping);
+      System.out.println("--------------------------");
+      System.out.printf("Total cost:" + "\t\t\t" + "$%,.2f\n", (price + shipping));      
 
    } // End displayTotal(price, shipping)
    
