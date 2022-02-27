@@ -1,10 +1,11 @@
 // Import java libraries
 import java.util.Scanner;
-// import java.text.DecimalFormat;
+
+
 
 /**
    CTP150-400 | Module 2 | Lab 2
-   
+   <br>
    This is a shipping calculator. The program will request user input for 
    an item's price and weight, validate weight is within an acceptable range, 
    calculate the cost of shipping based on weight, calculate the total cost 
@@ -16,6 +17,12 @@ import java.util.Scanner;
 
 public class ShippingCalculator
 {
+
+   /**
+      Main module. Calls intro(), requests item price from user, 
+      calls getWeight(), calls calcShipping(), and calls displayTotal().
+   */
+   
    public static void main(String[] args)
    {
       // Declare local variables
@@ -59,7 +66,7 @@ public class ShippingCalculator
       
    } // End intro()
    
-   
+ 
    
    /**
       Requests user input for item weight. Includes error checking for
@@ -77,10 +84,6 @@ public class ShippingCalculator
       // Create Scanner object
       Scanner keyboard = new Scanner(System.in);
       
-      // Create decimal formatter object
-      // Designed for pounds
-      // DecimalFormat lbs = new DecimalFormat("#0.00" + " lbs");
-      
       // Get weight input
       System.out.print("Enter item's weight in lbs: ");
       input = keyboard.nextDouble(); 
@@ -92,7 +95,6 @@ public class ShippingCalculator
          if (input > 20)
          {
             // Error message
-            //System.out.println("You entered: " + lbs.format(input));
             System.out.printf("You entered: %,.2f lbs\n", input);
             System.out.println("Packages above 20 lbs are too heavy to ship.");
             System.out.println("Please try again with a different item.");
@@ -104,7 +106,6 @@ public class ShippingCalculator
          else if (input < 0)
          {
             // Error message
-            //System.out.println(lbs.format(input) + " is invalid");
             System.out.printf("%,.2f is invalid.\n", input);
             System.out.println("Weight must be greater than 0 lbs.");
             System.out.println("Please try again.");         
@@ -164,18 +165,8 @@ public class ShippingCalculator
    */
    
    public static void displayTotal(double price, double shipping)
-   { 
-      // Create decimal formatter object
-      // Designed for USD
-      // DecimalFormat usd = new DecimalFormat("$" + "#0.00");
-            
+   {   
       // Display itemized totals to end-user
-      /*
-      System.out.println("Item price:" + "\t\t\t" + usd.format(price));
-      System.out.println("Shipping:" + "\t\t\t" + usd.format(shipping));
-      System.out.println("--------------------------");
-      System.out.println("Total cost:" + "\t\t\t" + usd.format(price + shipping));
-      */
       System.out.printf("Item price:" + "\t\t\t" + "$%,.2f\n", price);
       System.out.printf("Shipping:" + "\t\t\t" + "$%,.2f\n", shipping);
       System.out.println("--------------------------");
