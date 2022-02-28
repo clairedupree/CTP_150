@@ -1,0 +1,15 @@
+
+*.docx
+*.mp4
+*.mp3
+*.zip
+*.gdoc
+*.pdf
+*.txt
+*.class
+
+/Example Programs
+/Testing
+/Style Guides & Cheat Sheets
+
+*/Class
