@@ -61,6 +61,7 @@ public class Divisible
       {
          fileNum = inputFile.nextInt();
          System.out.println("The current number is: " + fileNum); //TODO: add punctuation?
+         // TODO: clean up formatting to resemble a table / list, not sentences
          //Calculate number of integers from 1-currentNum divisible by 2
          
          // How to efficently reuse the same loop for /2 & /3?
