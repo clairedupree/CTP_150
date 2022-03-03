@@ -41,108 +41,68 @@ public class Divisible
       // Declare local variables
       int fileNum = 0;
       int numDivisible = 0;
-      String answer = "Y";
-      int runningTotal = 0;
-      int thisNum = 0;
-      int innerNum = 0;
-      //final int DIVIDE_BY_1ST = 2;
-      //final int DIVIDE_BY_2ND = 3;
+      String keepGoing = "Y";
+      int sum = 0;
+      int dividend = 0; // TODO: make dividend parameters two constants?
       
       // Open file
       File file = new File("divisible");
-      // Scanner file read object
+      // Scanner for file reads
       Scanner inputFile = new Scanner(file);
-      // Scanner system input object
+      // Scanner for user input
       Scanner keyboard = new Scanner(System.in);
 
-
-      // Read first number from file
-      while (inputFile.hasNext() && (answer.equals("Y") || answer.equals("y"))) // " ?
+      
+      while (inputFile.hasNext() && (keepGoing.equals("Y") || keepGoing.equals("y")))
       {
          fileNum = inputFile.nextInt();
-         System.out.println("The current number is: " + fileNum); //TODO: add punctuation?
-         // TODO: clean up formatting to resemble a table / list, not sentences
-         //Calculate number of integers from 1-currentNum divisible by 2
+         System.out.println("Current num: " + fileNum);
          
-         // How to efficently reuse the same loop for /2 & /3?
-         // for loop dividend=2; dividend <= 3
-         for(int dividend = 2; dividend <= 3; dividend++) //TODO: replace literals with constant?
+         for(dividend = 2; dividend <= 3; dividend++)
          {
-            // make this a method??? code reuse?
-            numDivisible = (int)(fileNum / dividend);
-            System.out.println("There are " + (numDivisible) + " numbers divisible by " + dividend); // TODO: replace with a constant?
-            System.out.print("These numbers are: ");
-            for(thisNum = 1; thisNum <= fileNum; thisNum++)
+            System.out.print((fileNum / dividend) + " numbers divisible by " + dividend + ": ");
+            sum = 0; //clear sum
+            for(int currentNum = 1; currentNum <= fileNum; currentNum++)
             {
-               if ((thisNum % dividend) == 0)
+               if((currentNum % dividend) == 0)
                {
-                  System.out.print(thisNum + " ");
-                  runningTotal += thisNum;
-               }
-
-            } 
-                     
+                  System.out.print(currentNum + " ");
+                  sum += currentNum;
+               } //end if
+            } //end 1st inner for
             System.out.println();
-            System.out.println("The sum of these numbers is: " + runningTotal);
-            System.out.println();
+            System.out.println("Sum: " + sum);
             
-            //---------------repetitive code-------------------//
-            System.out.println("There are " + (fileNum-numDivisible) + " numbers not divisible by " + dividend);
-            System.out.print("These numbers are: ");
-            for(thisNum = 1; thisNum <= fileNum; thisNum++)
+            
+            
+            System.out.print((fileNum - (fileNum / dividend)) + " numbers not divisible by " + dividend + ": ");
+            sum = 0; //clear sum
+            for(int currentNum = 1; currentNum <= fileNum; currentNum++)
             {
-               if ((thisNum % dividend) != 0)
+               if((currentNum % dividend) != 0)
                {
-                  System.out.print(thisNum + " ");
-                  runningTotal += thisNum;
-               }   
-            } 
-                     
+                  System.out.print(currentNum + " ");
+                  sum += currentNum;
+               } //end if
+            } //end 2nd inner for
             System.out.println();
-            System.out.println("The sum of these numbers is: " + runningTotal);
-            System.out.println();
-
-                         
-         }
+            System.out.println("Sum: " + sum);          
+         } //end outer for
+                                    
                   
          // Continue?
          System.out.print("Would you like to read another number? Y/N: ");
-         answer = keyboard.nextLine();
+         keepGoing = keyboard.nextLine();
          System.out.println();
 
-      }
+      } //end while
       
-      //inputFile.nextLine();
-      //keyboard.nextLine();
-      //if (inputFile.hasNext())
-         System.out.println("Goodbye");
-      //else
-         //System.out.println("That is the end of the file.");
-         //System.out.println("Goodbye.");
+      // TODO: add if / else for specific end message (i.e. "goodbye" or "end of file, goodbye")
+      System.out.println("Goodbye");
          
       // Close the file
       inputFile.close();    
       
-      
    } //end main
-   
-   /*
-   // Overengineering?
-   public static void numDivisible(int fileNum, int dividend, String type)
-         System.out.println("There are " + (fileNum / dividend) + " numbers " + type + " by " + dividend); // TODO: replace with a constant?
-         System.out.print("These numbers are: ");
-         for(thisNum = 1; thisNum <= fileNum; thisNum++)
-         {
-            if ((thisNum % dividend) == 0)
-            {
-               System.out.print(thisNum + " ");
-               runningTotal += thisNum;
-            }   
-         } 
-                  
-         System.out.println();
-         System.out.println("The sum of these numbers is: " + runningTotal);
-         System.out.println();
-   */
 
 } //end class
