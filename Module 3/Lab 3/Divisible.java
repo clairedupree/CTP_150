@@ -40,18 +40,87 @@ public class Divisible
    {
       // Declare local variables
       int fileNum = 0;
-      int numDivisible = 0;
       String keepGoing = "Y";
-      int sum = 0;
-      int dividend = 0; // TODO: make dividend parameters two constants?
-      
+       
       // Open file
       File file = new File("divisible");
       // Scanner for file reads
       Scanner inputFile = new Scanner(file);
       // Scanner for user input
       Scanner keyboard = new Scanner(System.in);
+      
+      
+      while (inputFile.hasNext() && (keepGoing.equals("Y") || keepGoing.equals("y")))
+      {
+         fileNum = inputFile.nextInt();
+         System.out.println("Current num: " + fileNum);
+         
+         //call divide by module, send 2 as dividend
+         divideBy(fileNum, 2);
+         
+         //call divide by module, send 3 as dividend
+         divideBy(fileNum, 3);
+         
+         System.out.print("Would you like to read another number? Y/N: ");
+         keepGoing = keyboard.nextLine();
+         System.out.println();
+         
+      } //end while
+      
+      // TODO: add if / else for specific end message (i.e. "goodbye" or "end of file, goodbye")
+      System.out.println("Goodbye");
+         
+      // Close the file
+      inputFile.close();    
+      
+   } //end main
+   
+   public static void divideBy(int maxNum, int dividend)
+   {
+      // Declare local sum
+      int sum = 0;
+      
+      // Calculate numbers divisible by dividend
+      System.out.print((maxNum / dividend) + " numbers are divisible by " + dividend + ": ");
+      
+      for(int currentNum = 1; currentNum <= maxNum; currentNum++)
+      {
+         if((currentNum % dividend) == 0)
+         {
+            System.out.print(currentNum + " ");
+            sum += currentNum;
+         } //end if
+      } //end for
+      
+      System.out.println();
+      System.out.println("Sum: " + sum);
+      
+      sum = 0; //clear sum
+      
+      // Calculate numbers not divisible by dividend
+      System.out.print((maxNum - (maxNum / dividend)) + " numbers not divisible by " + dividend + ": ");
+      for(int currentNum = 1; currentNum <= maxNum; currentNum++)
+      {
+         if((currentNum % dividend) != 0)
+         {
+            System.out.print(currentNum + " ");
+            sum += currentNum;
+         } //end if
+      } //end for
+      
+      System.out.println();
+      System.out.println("Sum: " + sum);
 
+
+   } //end divideBy
+
+} //end class
+
+
+      /*
+      // POTENTIAL SOLUTION, nested loops:
+      // Logic works but is not ideal, code is confusing, heavy indentation, not scalable with different dividends
+      // Would need to declare int sum and int dividend in code body
       
       while (inputFile.hasNext() && (keepGoing.equals("Y") || keepGoing.equals("y")))
       {
@@ -88,7 +157,7 @@ public class Divisible
             System.out.println();
             System.out.println("Sum: " + sum);          
          } //end outer for
-                                    
+                                  
                   
          // Continue?
          System.out.print("Would you like to read another number? Y/N: ");
@@ -96,13 +165,4 @@ public class Divisible
          System.out.println();
 
       } //end while
-      
-      // TODO: add if / else for specific end message (i.e. "goodbye" or "end of file, goodbye")
-      System.out.println("Goodbye");
-         
-      // Close the file
-      inputFile.close();    
-      
-   } //end main
-
-} //end class
+      */
