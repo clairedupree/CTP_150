@@ -11,11 +11,6 @@ import java.util.Scanner;
    by a chosen dividend, and then displays those numbers and the sum of 
    those numbers. The program then does the same for numbers which are 
    not divisible by the chosen dividend. 
-        
-   // TODO: introduce program.
-   // TODO: You have reached the end of the file.
-   // TODO: less comments
-   // TODO: more spacing
        
    @author Claire Dupree
    @since 03/04/22
@@ -34,7 +29,7 @@ public class Divisible
    {
       // Declare local variables
       int fileNum = 0;
-      String keepGoing = "Y"; // Initialized to "yes"
+      String keepGoing = "";
        
       // Open file
       File file = new File("divisible");
@@ -48,41 +43,46 @@ public class Divisible
       intro();
       
       // Ask end-user if they want to start
+      System.out.println();
       System.out.print("Would you like to calculate the first number? Y/N: ");
       keepGoing = keyboard.nextLine();
       System.out.println();
       
-      // Enter loop if the file has another line 
-      // and when user selects continue
+      // Enter loop if the file has another line and when user selects continue
       while (inputFile.hasNext() && (keepGoing.equals("Y") 
                                  || keepGoing.equals("y")))
       {
          // Import next integer
          fileNum = inputFile.nextInt();
-         System.out.println("Current num: " + fileNum);
+         System.out.println("The current number is: " + fileNum);
+         System.out.println("====================================================");
          
          // Call division modules, 2 as dividend
          divisibleBy(fileNum, 2);
          notDivisibleBy(fileNum, 2);
          
+         System.out.println("----------------------------------------------------");
+        
          // Call division modules, 3 as dividend
-         divisibleBy(fileNum, 3);
+         divisibleBy(fileNum, 3);     
          notDivisibleBy(fileNum, 3);
          
          // Ask end-user if they want to continue
-         System.out.print("Would you like to read another number? Y/N: ");
+         System.out.println();
+         System.out.print("Would you like to calculate another number? Y/N: ");
          keepGoing = keyboard.nextLine();
          System.out.println();
          
-      } //end while
+      } //End while
       
       // TODO: add if / else for specific end message (i.e. "goodbye" or "end of file, goodbye")
+      // End program message
       System.out.println("Goodbye");
          
       // Close the file
       inputFile.close();    
       
-   } //end main
+   } //End main
    
    
    
@@ -92,12 +92,10 @@ public class Divisible
    */
    public static void intro()
    {
-      //INSERT INTRO
-      System.out.println("\t\t\t-- IS IT DIVISIBLE? --");
+      System.out.println("\t\t\t== IS IT DIVISIBLE? ==");
       System.out.println("This program reads integers from a file and");
       System.out.println("displays which ones are divisible and which");
       System.out.println("ones are not divisible by a chosen dividend.");
-      System.out.println();
    }
    
    
@@ -110,7 +108,7 @@ public class Divisible
       all calculations in a table.
       
       @param maxNum Integer to be the high-end of the range of divisible numbers
-      @param dividend Integer which each number be divided by
+      @param dividend Integer which each number is divided by
    */
    
    public static void divisibleBy(int maxNum, int dividend)
@@ -119,7 +117,8 @@ public class Divisible
       int sum = 0;
       
       // Calculate & display the number of integers divisible by dividend
-      System.out.print((maxNum / dividend) + " numbers are divisible by " + dividend + ": ");
+      System.out.print((maxNum / dividend) + " numbers between 1 and " + maxNum 
+                        + " are divisible by " + dividend + ": \n\t");
       
       // Loop through each integer starting at 1 - file number
       for(int currentNum = 1; currentNum <= maxNum; currentNum++)
@@ -129,13 +128,14 @@ public class Divisible
          {
             System.out.print(currentNum + " ");
             sum += currentNum; // Add integer to sum
-         } //end if
-      } //end for
+         } // End if
+      } // End for
       
       // Display sum of divisible integers
       System.out.println();
-      System.out.println("Sum: " + sum);
-   } // end divisibleBy
+      System.out.println("\tSum: " + sum);
+      
+   } // End divisibleBy
 
 
 
@@ -147,7 +147,7 @@ public class Divisible
       all calculations in a table.
       
       @param maxNum Integer to be the high-end of the range of non-divisible numbers
-      @param dividend Integer which each number be divided by
+      @param dividend Integer which each number is divided by
    */
    
    public static void notDivisibleBy(int maxNum, int dividend)
@@ -156,25 +156,27 @@ public class Divisible
       int sum = 0;
       
       // Calculate & display the number of integers NOT divisible by dividend
-      System.out.print((maxNum - (maxNum / dividend)) + " numbers not divisible by " + dividend + ": ");
+      System.out.print((maxNum - (maxNum / dividend)) + " numbers between 1 and " 
+                        + maxNum + " are not divisible by " + dividend + ": \n\t");
+
+      // Loop through each integer starting at 1 - file number                        
       for(int currentNum = 1; currentNum <= maxNum; currentNum++)
       {
-         // Loop through each integer starting at 1 - file number
+         // Display each integer NOT divisible by dividend      
          if((currentNum % dividend) != 0)
          {
-            // Display each integer NOT divisible by dividend      
             System.out.print(currentNum + " ");
             sum += currentNum; // Add integer to sum
-         } //end if
-      } //end for
+         } // End if
+      } // End for
       
       // Display sum of non-divisible integers
       System.out.println();
-      System.out.println("Sum: " + sum);
+      System.out.println("\tSum: " + sum);
 
-   } //end notDivisibleBy
+   } // End notDivisibleBy
 
-} //end class
+} //End class
 
 
       /*
