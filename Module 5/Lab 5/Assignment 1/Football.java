@@ -35,11 +35,12 @@ public class Football
       // Declare local variables
       //int i = 0; // index variable
       int highest = 0;
-      int hiI = 0; // TEMPORARY FIX
+      //int hiI = 0; // TEMPORARY FIX
       int lowest = 0;
-      int lowI = 0; // TEMPORARY FIX
+      //int lowI = 0; // TEMPORARY FIX
       int average = 0;
       int total = 0;
+      int over65000 = 0;
       int i = 0;
       
       // Open the file
@@ -81,18 +82,19 @@ public class Football
       */
       for (i = 0; i < scores.length; i++)
       {
+         // ~ solved!!!
          // TODO: FIND SOLUTION TO KEEP PLAYER AND SCORE TOGETHER
          // right now, in order to compare, need to save actual index amount
          // but would be more efficent if i only needed to save the subscript
          if (scores[i] > scores[highest])
-         {
             highest = i;         
-         }
             
          if (scores[i] < scores[lowest])
-         {
             lowest = i;
-         }   
+            
+         if (scores[i] > 65000) 
+            over65000++;
+      
          total += scores[i];             
       }
       // Calculate average of all scores
@@ -102,19 +104,29 @@ public class Football
       System.out.printf("Highest running yard average: %s | %,d yds\n", players[highest], scores[highest]);
       
       // Display lowest score
-      System.out.printf("Lowest running yard average: %s | %,d yds\n", players[lowest], scores[lowest]);
+      System.out.printf("Lowest running yard average: %s | %,d yds:\n", players[lowest], scores[lowest]);
 
       // Display average of all scores
       System.out.printf("Average of all running yard average scores: %,d yds\n", average);
       
+      System.out.printf(over65000 + " players scored greater than %,d yds:\n", 65000); 
+
       /*
       Determine the players and their averages that are higher than 65000 yards.
       Display how many of them are over this amount.
       */
-      System.out.println("Players with averages greater than 65,000 yds: ");
+      
+      //TODO: make the players into a print statement 
+      //which feeds into a variable and print that variable
+      // in order to calculayte first and didsplay second?
+      // or find a solution to count how many are greater than 65000
+      // ** add to main if statement: if (scores[i] > 65000) count++;
+      // System.out.println(count + " players scored greater than %,d yds", 65000);
+      //System.out.println("Players with averages greater than 65,000 yds: ");
       for (i = 0; i < scores.length; i++)
          if (scores[i] > 65000)
             System.out.printf("\t%s | %,d yds\n", players[i], scores[i]);
+            //count++;
          
       // Close the file
       read.close();
