@@ -30,12 +30,20 @@ public class Football
    public static void main(String[] args) throws IOException
    {
       // Declare constants
-      final int NUM_ENTRIES = 10; // number of football players and scores to be entered
+      final int SIZE = 7; // number of football players and scores to be entered
       
       // Declare local variables
+      //int i = 0; // index variable
+      int highest = 0;
+      int hiI = 0; // TEMPORARY FIX
+      int lowest = 0;
+      int lowI = 0; // TEMPORARY FIX
+      int average = 0;
+      int total = 0;
+      int i = 0;
       
       // Open the file
-      File inputFile = new File("football.txt");
+      File inputFile = new File("footballtest.txt");
       if (!inputFile.exists()) // is not valid
       {
          System.out.println("File not found.");
@@ -46,24 +54,69 @@ public class Football
       Scanner read = new Scanner(inputFile);
       
       // Create array for players
-      String[] players = new String[NUM_ENTRIES];
+      String[] players = new String[SIZE];
       
       // Create array for scores
-      int[] passingYardAvgs = new int[NUM_ENTRIES];
+      int[] scores = new int[SIZE];
       
       // Prime read, clear file header
       read.nextLine();
       
       // Input players and passing yard averages into respective arrays
-      for (int i = 0; i < NUM_ENTRIES; i++)
+      for (i = 0; i < SIZE; i++)
       {
          players[i] = read.nextLine();
-         System.out.print(players[i] + ": ");
-         passingYardAvgs[i] = Integer.parseInt(read.nextLine());
-         System.out.printf("%,d yds\n", passingYardAvgs[i]);
+         //System.out.print(players[i] + ": ");
+         scores[i] = Integer.parseInt(read.nextLine());
+         //System.out.printf("%,d yds\n", scores[i]);
       }
+      
+      // ENCHANCED FOR LOOP
+      // for (datatype variable: array)
+      
+      /*
+      Determine the highest football passing yards.
+      You will need to find the largest number in the data file - ch7.4
+      Display the highest yards and the player's name.
+      */
+      for (i = 0; i < scores.length; i++)
+      {
+         // TODO: FIND SOLUTION TO KEEP PLAYER AND SCORE TOGETHER
+         // right now, in order to compare, need to save actual index amount
+         // but would be more efficent if i only needed to save the subscript
+         if (scores[i] > scores[highest])
+         {
+            highest = i;         
+         }
+            
+         if (scores[i] < scores[lowest])
+         {
+            lowest = i;
+         }   
+         total += scores[i];             
+      }
+      // Calculate average of all scores
+      average = total / scores.length;
+      
+      // Display highest score
+      System.out.printf("Highest running yard average: %s | %,d yds\n", players[highest], scores[highest]);
+      
+      // Display lowest score
+      System.out.printf("Lowest running yard average: %s | %,d yds\n", players[lowest], scores[lowest]);
+
+      // Display average of all scores
+      System.out.printf("Average of all running yard average scores: %,d yds\n", average);
+      
+      /*
+      Determine the players and their averages that are higher than 65000 yards.
+      Display how many of them are over this amount.
+      */
+      System.out.println("Players with averages greater than 65,000 yds: ");
+      for (i = 0; i < scores.length; i++)
+         if (scores[i] > 65000)
+            System.out.printf("\t%s | %,d yds\n", players[i], scores[i]);
          
       // Close the file
-      //inputFile.close();
+      read.close();
    }
 }
