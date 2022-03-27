@@ -32,8 +32,24 @@ public class FootballDriver
          
          select = input.nextInt();
          
+         switch(select)
+         {
+            case 1: //fb.displayPlayers();
+            break;
+            case 2: //fb.displayPlayersReverse();
+            break;
+            case 3: System.out.println();
+                    fb.displayWinnersByNumber();
+            break;
+            case 4:
+         }
+         
+         System.out.println(); // line break
+         
       } while (select != 5);
       
+      // exit method
+      fb.exit();
       
    }   
 }
