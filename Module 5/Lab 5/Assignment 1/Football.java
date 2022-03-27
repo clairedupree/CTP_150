@@ -47,8 +47,8 @@ public class Football
       File inputFile = new File("footballtest.txt");
       if (!inputFile.exists()) // is not valid
       {
-         System.out.println("File not found.");
-         System.exit(0);
+         System.out.println("File not found."); // display error message
+         System.exit(0); // close program
       }
       
       // Create Scanner to read file
