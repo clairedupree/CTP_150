@@ -22,8 +22,8 @@ public class FootballDriver
       
       // menu do while loop
       do {
-         System.out.println("Main Menu | Please select:");
-         System.out.println("--------------------------");
+         System.out.println("\t\t\t\t== MAIN MENU ==");
+         System.out.println("****************************************");
          System.out.println("1) Show all players - ascending order");
          System.out.println("2) Show all players - descending order");
          System.out.println("3) Search a player by rank");
@@ -31,15 +31,15 @@ public class FootballDriver
          System.out.println("5) Exit");
          
          select = input.nextInt();
+         System.out.println(); // line break
          
          switch(select)
          {
-            case 1: //fb.displayPlayers();
+            case 1: fb.displayPlayers();
             break;
-            case 2: //fb.displayPlayersReverse();
+            case 2: fb.displayPlayersReverse();
             break;
-            case 3: System.out.println();
-                    fb.displayWinnersByNumber();
+            case 3: fb.displayWinnersByNumber();
             break;
             case 4:
          }
