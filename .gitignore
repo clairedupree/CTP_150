@@ -8,9 +8,11 @@
 *.txt
 *.class
 *.DRAWIO
+*.file
 
 /Example Programs
 /Testing
 /Style Guides & Cheat Sheets
+/Module 6/Lab 6/old
 
 */Class
