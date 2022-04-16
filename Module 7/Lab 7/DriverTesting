@@ -1,0 +1,26 @@
+// RecreationPlaceDriver Unit Testing
+Place p1 = new Place();
+Place p2 = new Place("Batimore", "Maryland");
+Place p3;
+Place p4 = new Place(p1);
+System.out.println(p2);
+RecreationPlace rp1 = new RecreationPlace();
+RecreationPlace rp2 = new RecreationPlace("Atwaters", "Cafe", 50, p2);
+RecreationPlace rp3;
+System.out.println(rp2);
+p2.setState("Pennsylvania");
+rp2.setPlace(p2);
+System.out.println(rp2);
+System.out.println(); //line break
+System.out.println(p2.getStateInitials());
+p3 = new Place(p2);
+System.out.println(p3);
+rp3 = rp2.copy();
+
+rp1.setName("MCHC");
+rp1.setType("Museum");
+rp1.setPrice(4000);
+p4.setState("Maryland");
+p4.setCity("Baltimore");
+rp1.setPlace(p4);
+System.out.println(rp1 + ", " + p4.getStateInitials());
