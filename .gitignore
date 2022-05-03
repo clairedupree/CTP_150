@@ -8,7 +8,7 @@
 *.txt
 *.class
 *.DRAWIO
-*.file
+*.ini
 
 /Example Programs
 /Testing
