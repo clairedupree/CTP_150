@@ -1,23 +1,39 @@
 /**
+   CTP 150-400 | Lab 8
    Class definition for a Textbook, defines the book category, price, name, and "has an" Author.
+   <br>
+   @author Claire Dupree
+   @since 4/16/22
 */
 
 public class Textbook
 {
-   //author : Author
+   /**
+      Private object attribute for the Author,
+      contains name and address.
+   */
    private Author author;
    
-   //name: String
+   /**
+      Private attribute for the book name.
+   */
    private String bookName;
    
-   //category : String
+   /**
+      Private attribute for the book category.
+   */
    private String category;
    
-   //price : double
+   /**
+      Private attribute for the book price.
+   */
    private double price;
    
    
-   //default constructor
+   /**
+		This constructor creates a Textbook object with default 
+      values for all attributes.
+   */
    public Textbook()
    {
       this.author = new Author();
@@ -26,9 +42,14 @@ public class Textbook
       this.price = 0.0;
    }
    
-   //second constructor with author, category,  
-   //price as parameters
-   //DOES THIS NEED TO IMPORT AN AUTHOR OBJECT?****************
+   /**
+		This constructor creates a Textbook with input values for all attributes.
+      @param authorName The author's name.
+      @param authorAddress The author's address.
+      @param bookName The book name.
+      @param category The book category.
+      @param price The book price.
+   */
    public Textbook(String authorName, String authorAddress, String bookName, 
                    String category, double price)
    {
@@ -39,18 +60,7 @@ public class Textbook
    }
    
    /*
-   //copy constructor
-   //are getters correct here? ***************
-   public Textbook(Textbook copy)
-   {
-      this.author = new Author(copy.author.getAuthorName(), copy.author.getAddress());
-      this.bookName = copy.bookName;
-      this.category = copy.category;
-      this.price = copy.price;
-   }
-   */
-   //second constructor with author, category,  
-   //price as parameters
+   //Constructor with Author object instead of individual values
    public Textbook(Author author, String bookName, 
                    String category, double price)
    {
@@ -59,9 +69,13 @@ public class Textbook
       this.category = category;
       this.price = price;
    }
+   */
    
-   //copy constructor
-   //are getters correct here? ***************
+   /**
+      This constructor creates a Textbook with copied attributes 
+      from an existing Textbook object.
+      @param copy The Textbook object to be copied.
+   */
    public Textbook(Textbook copy)
    {
       this.author = new Author(copy.author);
@@ -70,8 +84,10 @@ public class Textbook
       this.price = copy.price;
    }
    
+   
    /**
-      author getter
+      Returns the private Author object.
+      @return author The author object.
    */
    public Author getAuthor()
    {
@@ -80,23 +96,30 @@ public class Textbook
    }
    
    /**
-      author setter
+      Sets the values of the Author object based on individual
+      values for name and address.
+      @param authorName The author's name to be stored.
+      @param address The author's address to be stored.
    */
    public void setAuthor(String authorName, String address)
    {
       this.author = new Author(authorName, address);
    }
    
-   /**
-      author setter
-   */
+   /*
+      Sets the values of the Author object based on
+      a parameter object to be copied.
+      @param author An author object to be copied into author.
    public void setAuthor(Author author)
    {
       this.author = new Author(author);
    }
+   */
+   
    
    /**
-      bookName getter
+      Returns the private book title attribute.
+      @return bookName The book title.
    */
    public String getBookName()
    {
@@ -104,7 +127,8 @@ public class Textbook
    }
    
    /**
-      bookName setter
+      Sets the value of the book name attribute.
+      @param bookName The value to be stored in bookName.
    */
    public void setBookName(String bookName)
    {
@@ -113,7 +137,8 @@ public class Textbook
    
    
    /**
-      category getter
+      Returns the private book category attribute.
+      @return category The book category.
    */
    public String getCategory()
    {
@@ -121,7 +146,8 @@ public class Textbook
    }
    
    /**
-      category setter
+      Sets the value of the book category attribute.
+      @param category The value to be stored in category.
    */
    public void setCategory(String category)
    {
@@ -130,7 +156,8 @@ public class Textbook
    
    
    /**
-      price getter
+      Returns the private book price attribute.
+      @return price The book price.
    */
    public double getPrice()
    {
@@ -138,14 +165,21 @@ public class Textbook
    }
    
    /**
-      price setter
+      Sets the value of the price category attribute.
+      @param price The value to be stored in price.
    */
    public void setPrice(double price)
    {
       this.price = price;
    }
    
-   //equals()
+   
+   /**
+      This function returns a boolean based on whether the 
+      parameter object is the same as the current object.
+      @param compare The Textbook object to be compared against the current object.
+      @return same A true or false on whether the objects are the same.
+   */
    public boolean equals(Textbook compare)
    {
       boolean same = false;
@@ -158,7 +192,11 @@ public class Textbook
           return same;
    }
    
-   //toString()
+   
+   /**
+      This method returns the current state of the object.
+      @return output The current state of all attributes.
+   */
    public String toString()
    {
       String str = "";
@@ -170,16 +208,19 @@ public class Textbook
       return str;
    }
    
-   //reducePrice(percentage : double)
-   //Create a method to be able to take the price 
-   //and reduce it by a percentage of the total 
-   //current price and print that out.  You have 
-   //direct access to that price. 
+   
+   /**
+      This method displays the reduced price of
+      the Textbook based on a percetage amount.
+      @param percent The percentage the price is to be reduced by.
+   */
    public void reducePrice(double percent)
    {
+      //Calculate amount to reduce based on percent
       double reduced = 0.0;
       reduced = price - (price * percent);
 
+      //Display reduced price
       System.out.println("Reduced price: $" + reduced);      
    } 
   
